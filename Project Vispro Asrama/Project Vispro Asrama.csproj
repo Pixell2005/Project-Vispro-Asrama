@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{396FC9CF-7E27-4FE0-9E56-1DBEC109BB10}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Project_Vispro_Asrama</RootNamespace>
+    <AssemblyName>Project Vispro Asrama</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCheckin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCheckin.Designer.cs">
+      <DependentUpon>FrmCheckin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmJadwalPemeriksaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmJadwalPemeriksaan.Designer.cs">
+      <DependentUpon>FrmJadwalPemeriksaan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKepas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKepas.Designer.cs">
+      <DependentUpon>FrmKepas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMntor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMntor.Designer.cs">
+      <DependentUpon>FrmMntor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPemeriksaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPemeriksaan.Designer.cs">
+      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPoin.Designer.cs">
+      <DependentUpon>FrmPoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrameterLaporan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrameterLaporan.Designer.cs">
+      <DependentUpon>FrmPrameterLaporan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStudent.Designer.cs">
+      <DependentUpon>FrmStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCheckin.resx">
+      <DependentUpon>FrmCheckin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmJadwalPemeriksaan.resx">
+      <DependentUpon>FrmJadwalPemeriksaan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKepas.resx">
+      <DependentUpon>FrmKepas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMntor.resx">
+      <DependentUpon>FrmMntor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPemeriksaan.resx">
+      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPoin.resx">
+      <DependentUpon>FrmPoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrameterLaporan.resx">
+      <DependentUpon>FrmPrameterLaporan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmStudent.resx">
+      <DependentUpon>FrmStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
