@@ -10,32 +10,20 @@ using System.Windows.Forms;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
-
 namespace Project_Vispro_Asrama
 {
-    public partial class FrmPoin : Form
+    public partial class FrmKurangPoin : Form
     {
         private MySqlConnection koneksi;
         private MySqlDataAdapter adapter;
         private MySqlCommand perintah;
         private DataSet ds = new DataSet();
         private string alamat, query;
-
-        public FrmPoin()
+        public FrmKurangPoin()
         {
             alamat = "server=localhost; database=db_asrama; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FrmPoin_Load(object sender, EventArgs e)
-        {
-
         }
 
 
@@ -58,7 +46,7 @@ namespace Project_Vispro_Asrama
                         // Jika mahasiswa ditemukan berdasarkan NIM, tambahkan poin baru ke poin yang sudah ada
                         int currentPoin = Convert.ToInt32(reader["poin"]);
                         int additionalPoin = Convert.ToInt32(txtPoin.Text);
-                        int newTotalPoin = currentPoin + additionalPoin;
+                        int newTotalPoin = currentPoin - additionalPoin;
 
                         // Tutup reader sebelum menjalankan query update
                         reader.Close();
@@ -71,7 +59,7 @@ namespace Project_Vispro_Asrama
 
                         if (res == 1)
                         {
-                            MessageBox.Show("Poin berhasil ditambahkan. Total Poin: " + newTotalPoin);
+                            MessageBox.Show("Poin berhasil dikurangi. Total Poin: " + newTotalPoin);
 
                             // Buka FrmBerandaMntor setelah sukses menambahkan poin
                             FrmMntor frmMntor = new FrmMntor();
@@ -80,37 +68,7 @@ namespace Project_Vispro_Asrama
                         }
                         else
                         {
-                            MessageBox.Show("Gagal menambahkan poin.");
-                        }
-                    }
-                    else
-                    {
-                        // Jika mahasiswa dengan NIM tersebut tidak ditemukan, tambahkan sebagai mahasiswa baru
-                        reader.Close(); // Tutup reader sebelum melakukan operasi lain
-
-                        int newPoin = Convert.ToInt32(txtPoin.Text);
-                        string jenisPelanggaran = txtJenisPelanggaran.Text; // Ambil jenis pelanggaran dari field input
-
-                        // Query untuk menambahkan mahasiswa baru ke tabel student_asrama
-                        queryStudentAsrama = string.Format("INSERT INTO student_asrama (nim, full_name, room_number, jumlah_pelanggaran, jenis_pelanggaran, poin) " +
-                                                           "VALUES ('{0}', '{1}', '{2}', {3}, '{4}', {5})",
-                                                           txtNIM.Text, txtNamaMahasiswa.Text, txtKamar.Text, 1, jenisPelanggaran, newPoin);
-
-                        MySqlCommand perintahInsert = new MySqlCommand(queryStudentAsrama, koneksi);
-                        int res = perintahInsert.ExecuteNonQuery();
-
-                        if (res == 1)
-                        {
-                            MessageBox.Show("Mahasiswa baru berhasil ditambahkan dengan NIM: " + txtNIM.Text + " dan Poin: " + newPoin);
-
-                            // Buka FrmBerandaMntor setelah sukses menambahkan mahasiswa baru
-                            FrmMntor frmMntor = new FrmMntor();
-                            frmMntor.Show();
-                            this.Hide(); // Sembunyikan form saat ini
-                        }
-                        else
-                        {
-                            MessageBox.Show("Gagal menambahkan mahasiswa baru.");
+                            MessageBox.Show("Gagal mengurangi poin.");
                         }
                     }
 
@@ -127,7 +85,10 @@ namespace Project_Vispro_Asrama
                 koneksi.Close();
             }
 
+        }
 
+        private void FrmKurangPoin_Load(object sender, EventArgs e)
+        {
 
         }
     }

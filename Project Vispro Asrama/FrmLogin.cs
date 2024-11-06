@@ -49,105 +49,156 @@ namespace Project_Vispro_Asrama
 
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            FrmInfoAsrama frmInfoAsrama = new FrmInfoAsrama();
+            frmInfoAsrama.Show();
+            this.Hide();
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-                try
-                {
-                    ds.Clear();
+            try
+            {
+                ds.Clear();
 
-                    // Query untuk student
-                    string queryStudent = string.Format("SELECT * FROM student WHERE email = '{0}'", txtEmail.Text);
+                // Query untuk student_asrama dengan NULL handling
+                string queryStudent = @"SELECT NIM, full_name, sisa_bayar, password, room_number,
+                                NULLIF(check_in, '0000-00-00 00:00:00') AS check_in, 
+                                NULLIF(check_out, '0000-00-00 00:00:00') AS check_out
+                                FROM student_asrama 
+                                WHERE email = @Email";
+
+                koneksi.Open();
+                perintah = new MySqlCommand(queryStudent, koneksi);
+                perintah.Parameters.AddWithValue("@Email", txtEmail.Text);
+                adapter = new MySqlDataAdapter(perintah);
+                adapter.Fill(ds);
+                koneksi.Close();
+
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    // Login sebagai student_asrama
+                    DataRow kolom = ds.Tables[0].Rows[0];
+                    string sandi = kolom["password"].ToString();
+
+                    // Compare password
+                    if (sandi == txtPass.Text)
+                    {
+                        // Get user details
+                        string namaPengguna = kolom["full_name"].ToString();
+                        string nim = kolom["NIM"].ToString();
+                        decimal sisaBayar = Convert.ToDecimal(kolom["sisa_bayar"]);
+                        string noKamar = kolom["room_number"].ToString();
+
+                        // Parse check_in date safely
+                        DateTime? checkInDate = null;
+                        if (kolom["check_in"] != DBNull.Value)
+                        {
+                            if (DateTime.TryParse(kolom["check_in"].ToString(), out DateTime parsedCheckIn))
+                            {
+                                checkInDate = parsedCheckIn;
+                            }
+                        }
+
+                        // Parse check_out date safely
+                        DateTime? checkOutDate = null;
+                        if (kolom["check_out"] != DBNull.Value)
+                        {
+                            if (DateTime.TryParse(kolom["check_out"].ToString(), out DateTime parsedCheckOut))
+                            {
+                                checkOutDate = parsedCheckOut;
+                            }
+                        }
+
+                        // Open the student form and pass necessary details
+                        FrmStudent frmStudent = new FrmStudent(namaPengguna, nim, sisaBayar, noKamar);
+                        frmStudent.Show();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Password salah untuk Student");
+                    }
+                }
+                else
+                {
+                    // Query for monitor
+                    ds.Clear();
+                    string queryMonitor = "SELECT * FROM monitor WHERE email = @Email";
                     koneksi.Open();
-                    perintah = new MySqlCommand(queryStudent, koneksi);
+                    perintah = new MySqlCommand(queryMonitor, koneksi);
+                    perintah.Parameters.AddWithValue("@Email", txtEmail.Text);
                     adapter = new MySqlDataAdapter(perintah);
-                    perintah.ExecuteNonQuery();
                     adapter.Fill(ds);
                     koneksi.Close();
 
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        // Login sebagai student
+                        // Login as monitor
                         DataRow kolom = ds.Tables[0].Rows[0];
                         string sandi = kolom["password"].ToString();
+
                         if (sandi == txtPass.Text)
                         {
-                            FrmStudent frmstudent = new FrmStudent();
-                            frmstudent.Show();
+                            FrmMntor frmmntor = new FrmMntor();
+                            frmmntor.Show();
                             this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Password salah untuk Student");
+                            MessageBox.Show("Password incorrect for Monitor.");
                         }
                     }
                     else
                     {
-                        // Query untuk monitor
-                        ds.Clear(); // Bersihkan dataset sebelum query berikutnya
-                        string queryMonitor = string.Format("SELECT * FROM monitor WHERE email = '{0}'", txtEmail.Text);
+                        // Query for dormitory_head
+                        ds.Clear();
+                        string queryDormitoryHead = "SELECT * FROM dormitory_head WHERE email = @Email";
                         koneksi.Open();
-                        perintah = new MySqlCommand(queryMonitor, koneksi);
+                        perintah = new MySqlCommand(queryDormitoryHead, koneksi);
+                        perintah.Parameters.AddWithValue("@Email", txtEmail.Text);
                         adapter = new MySqlDataAdapter(perintah);
-                        perintah.ExecuteNonQuery();
                         adapter.Fill(ds);
                         koneksi.Close();
 
                         if (ds.Tables[0].Rows.Count > 0)
                         {
-                            // Login sebagai monitor
+                            // Login as dormitory head
                             DataRow kolom = ds.Tables[0].Rows[0];
                             string sandi = kolom["password"].ToString();
+
                             if (sandi == txtPass.Text)
                             {
-                                FrmMntor frmmntor = new FrmMntor();
-                                frmmntor.Show();
+                                FrmKepas frmkepas = new FrmKepas();
+                                frmkepas.Show();
                                 this.Close();
                             }
                             else
                             {
-                                MessageBox.Show("Password salah untuk Monitor");
+                                MessageBox.Show("Password incorrect for Dormitory Head.");
                             }
                         }
                         else
                         {
-                            // Query untuk kepala asrama (dormitory_head)
-                            ds.Clear(); // Bersihkan dataset sebelum query berikutnya
-                            string queryDormitory_Head = string.Format("SELECT * FROM dormitory_head WHERE email = '{0}'", txtEmail.Text);
-                            koneksi.Open();
-                            perintah = new MySqlCommand(queryDormitory_Head, koneksi);
-                            adapter = new MySqlDataAdapter(perintah);
-                            perintah.ExecuteNonQuery();
-                            adapter.Fill(ds);
-                            koneksi.Close();
-
-                            if (ds.Tables[0].Rows.Count > 0)
-                            {
-                                // Login sebagai kepala asrama
-                                DataRow kolom = ds.Tables[0].Rows[0];
-                                string sandi = kolom["password"].ToString();
-                                if (sandi == txtPass.Text)
-                                {
-                                    FrmKepas frmkepas = new FrmKepas();
-                                    frmkepas.Show();
-                                    this.Close();
-                                }
-                                else
-                                {
-                                    MessageBox.Show("Password salah untuk Kepala Asrama");
-                                }
-                            }
-                            else
-                            {
-                                // Jika tidak ada email ditemukan di ketiga tabel
-                                MessageBox.Show("Username tidak ditemukan");
-                            }
+                            // No email found in any of the tables
+                            MessageBox.Show("Username not found.");
                         }
                     }
                 }
-                catch (Exception ex)
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            finally
+            {
+                if (koneksi.State == ConnectionState.Open)
                 {
-                    MessageBox.Show(ex.ToString());
+                    koneksi.Close();
                 }
+            }
+
         }
     }
 }

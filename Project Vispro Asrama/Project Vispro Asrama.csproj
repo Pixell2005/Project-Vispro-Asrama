@@ -33,11 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Data.EntityFramework, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="MySql.Web, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,17 +55,65 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmChangePass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmChangePass.Designer.cs">
+      <DependentUpon>FrmChangePass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDropStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDropStudent.Designer.cs">
+      <DependentUpon>FrmDropStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInfoAsrama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInfoAsrama.Designer.cs">
+      <DependentUpon>FrmInfoAsrama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmKurangPoin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKurangPoin.Designer.cs">
+      <DependentUpon>FrmKurangPoin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPemeriksaan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPemeriksaan.Designer.cs">
+      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRegister.Designer.cs">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTambahDormKid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTambahDormKid.Designer.cs">
+      <DependentUpon>FrmTambahDormKid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Keuangan.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Keuangan.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CR_Akun.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CR_Akun.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmCheckin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCheckin.Designer.cs">
-      <DependentUpon>FrmCheckin.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmJadwalPemeriksaan.cs">
       <SubType>Form</SubType>
@@ -85,23 +139,11 @@
     <Compile Include="FrmMntor.Designer.cs">
       <DependentUpon>FrmMntor.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmPemeriksaan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPemeriksaan.Designer.cs">
-      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmPoin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmPoin.Designer.cs">
       <DependentUpon>FrmPoin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmPrameterLaporan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmPrameterLaporan.Designer.cs">
-      <DependentUpon>FrmPrameterLaporan.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmStudent.cs">
       <SubType>Form</SubType>
@@ -109,13 +151,63 @@
     <Compile Include="FrmStudent.Designer.cs">
       <DependentUpon>FrmStudent.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTransaction.Designer.cs">
+      <DependentUpon>FrmTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="KeuanganStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KeuanganStudent.Designer.cs">
+      <DependentUpon>KeuanganStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PencarianLaporan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PencarianLaporan.Designer.cs">
+      <DependentUpon>PencarianLaporan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SemuaStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SemuaStudent.Designer.cs">
+      <DependentUpon>SemuaStudent.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FrmChangePass.resx">
+      <DependentUpon>FrmChangePass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDropStudent.resx">
+      <DependentUpon>FrmDropStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInfoAsrama.resx">
+      <DependentUpon>FrmInfoAsrama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmKurangPoin.resx">
+      <DependentUpon>FrmKurangPoin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPemeriksaan.resx">
+      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRegister.resx">
+      <DependentUpon>FrmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTambahDormKid.resx">
+      <DependentUpon>FrmTambahDormKid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Keuangan.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Keuangan.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CR_Akun.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CR_Akun.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmCheckin.resx">
-      <DependentUpon>FrmCheckin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmJadwalPemeriksaan.resx">
       <DependentUpon>FrmJadwalPemeriksaan.cs</DependentUpon>
@@ -129,17 +221,20 @@
     <EmbeddedResource Include="FrmMntor.resx">
       <DependentUpon>FrmMntor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPemeriksaan.resx">
-      <DependentUpon>FrmPemeriksaan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmPoin.resx">
       <DependentUpon>FrmPoin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmPrameterLaporan.resx">
-      <DependentUpon>FrmPrameterLaporan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmStudent.resx">
       <DependentUpon>FrmStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTransaction.resx">
+      <DependentUpon>FrmTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KeuanganStudent.resx">
+      <DependentUpon>KeuanganStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PencarianLaporan.resx">
+      <DependentUpon>PencarianLaporan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -149,7 +244,12 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SemuaStudent.resx">
+      <DependentUpon>SemuaStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="FrmCheckout.Designer.ccs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -162,6 +262,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LOGO_UNIVERSITAS_KLABAT.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unklab.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\088154ee-ea75-4205-a165-94cf32fb3b0c.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

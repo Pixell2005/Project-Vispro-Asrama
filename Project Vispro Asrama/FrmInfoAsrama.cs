@@ -10,31 +10,30 @@ using System.Windows.Forms;
 
 namespace Project_Vispro_Asrama
 {
-    public partial class FrmPrameterLaporan : Form
+    public partial class FrmInfoAsrama : Form
     {
-        public FrmPrameterLaporan()
+        public FrmInfoAsrama()
         {
             InitializeComponent();
         }
 
-        private void FrmPrameterLaporan_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            FrmKepas frmKepas = new FrmKepas();
-            frmKepas.Show();
+            FrmMain frmMain = new FrmMain();
+            frmMain.Show();
             this.Hide();
-
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            FrmKepas frmKepas = new FrmKepas();
-            frmKepas.Show();
-            this.Hide();
+            FrmRegister frmRegister = new FrmRegister();
+            frmRegister.Show();
+            
+        }
+
+        private void FrmInfoAsrama_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,36 +16,20 @@ namespace Project_Vispro_Asrama
 {
     public partial class FrmPemeriksaan : Form
     {
+
         private MySqlConnection koneksi;
         private MySqlCommand perintah;
         private string alamat;
         private DateTime selectedDate;
-
         public FrmPemeriksaan(DateTime date)
         {
+            // Inisialisasi string koneksi ke database
             alamat = "server=localhost; database=db_asrama; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
-
             InitializeComponent();
+
+            // Simpan tanggal yang diterima ke dalam variabel lokal
             selectedDate = date;
-        }
-
-        private void FrmPemeriksaan_Load(object sender, EventArgs e)
-        {
-            if (lblTanggalPemeriksaan != null)
-            {
-                lblTanggalPemeriksaan.Text = "Tanggal Pemeriksaan: " + selectedDate.ToString("dd/MM/yyyy");
-            }
-            else
-            {
-                MessageBox.Show("Label tanggal tidak ditemukan!");
-            }
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void label5_Click(object sender, EventArgs e)
@@ -52,19 +37,9 @@ namespace Project_Vispro_Asrama
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-            if (txtNoKamar.Text != "" && txtTidakHadir.Text != "" && txtHadir.Text != "" && txtJam.Text != "")
+            if (txtNoKamar.Text != "" && txtTidakHadir.Text != "" && txtHadir.Text != "" && txtHadir.Text != "")
             {
                 try
                 {
@@ -78,7 +53,7 @@ namespace Project_Vispro_Asrama
                     perintah.Parameters.AddWithValue("@noKamar", txtNoKamar.Text);
                     perintah.Parameters.AddWithValue("@tidakHadir", Convert.ToInt32(txtTidakHadir.Text));
                     perintah.Parameters.AddWithValue("@hadir", Convert.ToInt32(txtHadir.Text));
-                    perintah.Parameters.AddWithValue("@jam", txtJam.Text);
+                    perintah.Parameters.AddWithValue("@jam", txtHadir.Text);
 
                     int res = perintah.ExecuteNonQuery();
 
@@ -101,15 +76,13 @@ namespace Project_Vispro_Asrama
                 }
 
                 // Setelah data tersimpan, kembali ke BerandaMntor
-                FrmMntor frmMntor = new FrmMntor();
-                frmMntor.Show();
+                
                 this.Hide();
             }
             else
             {
                 MessageBox.Show("Semua field harus diisi.");
             }
-
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -117,6 +90,18 @@ namespace Project_Vispro_Asrama
             FrmJadwalPemeriksaan frmJadwalPemeriksaan = new FrmJadwalPemeriksaan();
             frmJadwalPemeriksaan.Show();
             this.Hide();
+        }
+
+        private void FrmPemeriksaan_Load(object sender, EventArgs e)
+        {
+            if (lblTanggalPemeriksaan != null)
+            {
+                lblTanggalPemeriksaan.Text = "Tanggal Pemeriksaan: " + selectedDate.ToString("dd/MM/yyyy");
+            }
+            else
+            {
+                MessageBox.Show("Label tanggal tidak ditemukan!");
+            }
         }
     }
 }

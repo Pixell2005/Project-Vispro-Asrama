@@ -21,34 +21,35 @@ namespace Project_Vispro_Asrama
         private DataSet ds = new DataSet();
         private string alamat, query;
 
+
         public FrmJadwalPemeriksaan()
         {
             alamat = "server=localhost; database=db_asrama; username=root; password=;";
             koneksi = new MySqlConnection(alamat);
             InitializeComponent();
+            button1.Click += button1_Click;
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ShowFormInPanel(Form form)
         {
-            FrmMntor frmMntor = new FrmMntor();
-            frmMntor.Show();
-            this.Hide();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            panelKonten.Controls.Clear();  // Bersihkan panel sebelum menambahkan form baru
+            panelKonten.Controls.Add(form);
+            form.Show();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
+            
             // Ambil tanggal yang dipilih dari MonthCalendar
             DateTime selectedDate = monthCalendar1.SelectionRange.Start;
 
             // Buat instance FrmPemeriksaan dengan parameter tanggal
-            FrmPemeriksaan frmPemeriksaan = new FrmPemeriksaan(selectedDate);
+            var frmPemeriksaan = new FrmPemeriksaan(selectedDate);
 
             // Tampilkan FrmPemeriksaan
-            frmPemeriksaan.Show();
-
-            // Sembunyikan form Jadwal Pemeriksaan ini
-            this.Hide();
-
+            ShowFormInPanel(frmPemeriksaan);
         }
     }
 }
