@@ -9,18 +9,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data;
-using MySql.Data.MySqlClient;
-
 
 namespace Project_Vispro_Asrama
 {
     public partial class FrmPemeriksaan : Form
     {
-
         private MySqlConnection koneksi;
         private MySqlCommand perintah;
         private string alamat;
-        private DateTime selectedDate;
+        private DateTime selectedDate; // Parameter tanggal yang diterima dari form sebelumnya
+
         public FrmPemeriksaan(DateTime date)
         {
             // Inisialisasi string koneksi ke database
@@ -39,7 +37,7 @@ namespace Project_Vispro_Asrama
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtNoKamar.Text != "" && txtTidakHadir.Text != "" && txtHadir.Text != "" && txtHadir.Text != "")
+            if (txtNoKamar.Text != "" && txtTidakHadir.Text != "" && txtHadir.Text != "")
             {
                 try
                 {
@@ -49,11 +47,16 @@ namespace Project_Vispro_Asrama
                     string query = "INSERT INTO pemeriksaan (tanggal_pemeriksaan, no_kamar, jumlah_tidak_hadir, jumlah_hadir, jam_pemeriksaan) " +
                                    "VALUES (@tanggal, @noKamar, @tidakHadir, @hadir, @jam)";
                     perintah = new MySqlCommand(query, koneksi);
-                    perintah.Parameters.AddWithValue("@tanggal", selectedDate);
+
+                    // Ambil waktu dari DateTimePicker
+                    string waktuPemeriksaan = dtpWaktu.Value.ToString("HH:mm:ss");
+
+                    // Set parameter SQL
+                    perintah.Parameters.AddWithValue("@tanggal", selectedDate.ToString("yyyy-MM-dd")); // Menggunakan tanggal dari parameter selectedDate
                     perintah.Parameters.AddWithValue("@noKamar", txtNoKamar.Text);
                     perintah.Parameters.AddWithValue("@tidakHadir", Convert.ToInt32(txtTidakHadir.Text));
                     perintah.Parameters.AddWithValue("@hadir", Convert.ToInt32(txtHadir.Text));
-                    perintah.Parameters.AddWithValue("@jam", txtHadir.Text);
+                    perintah.Parameters.AddWithValue("@jam", waktuPemeriksaan); // Waktu dari DateTimePicker
 
                     int res = perintah.ExecuteNonQuery();
 
@@ -75,8 +78,7 @@ namespace Project_Vispro_Asrama
                     koneksi.Close();
                 }
 
-                // Setelah data tersimpan, kembali ke BerandaMntor
-                
+                // Setelah data tersimpan, kembali ke BerandaMentor
                 this.Hide();
             }
             else
@@ -96,6 +98,7 @@ namespace Project_Vispro_Asrama
         {
             if (lblTanggalPemeriksaan != null)
             {
+                // Tampilkan tanggal pemeriksaan di label
                 lblTanggalPemeriksaan.Text = "Tanggal Pemeriksaan: " + selectedDate.ToString("dd/MM/yyyy");
             }
             else

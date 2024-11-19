@@ -154,6 +154,13 @@ namespace Project_Vispro_Asrama
             this.Close();
         }
 
+        private void btnCheckKamar_Click(object sender, EventArgs e)
+        {
+            FrmKamar frmKamar = new FrmKamar();
+            frmKamar.Show();
+            this.Close();
+        }
+
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             // Check if all required fields are filled

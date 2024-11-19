@@ -36,13 +36,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panelKonten = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // button2
@@ -136,16 +136,6 @@
             this.label2.Text = "MENU";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Project_Vispro_Asrama.Properties.Resources.LOGO_UNIVERSITAS_KLABAT;
-            this.pictureBox1.Location = new System.Drawing.Point(84, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(170, 108);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.label1);
@@ -167,11 +157,23 @@
             // 
             // panelKonten
             // 
+            this.panelKonten.BackgroundImage = global::Project_Vispro_Asrama.Properties.Resources.Desktop___1;
+            this.panelKonten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelKonten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelKonten.Location = new System.Drawing.Point(329, 100);
             this.panelKonten.Name = "panelKonten";
             this.panelKonten.Size = new System.Drawing.Size(1244, 751);
             this.panelKonten.TabIndex = 11;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Project_Vispro_Asrama.Properties.Resources.LOGO_UNIVERSITAS_KLABAT;
+            this.pictureBox1.Location = new System.Drawing.Point(84, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(170, 108);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmStudent
             // 
@@ -189,9 +191,9 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

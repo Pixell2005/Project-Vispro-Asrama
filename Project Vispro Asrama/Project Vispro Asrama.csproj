@@ -73,6 +73,12 @@
     <Compile Include="FrmInfoAsrama.Designer.cs">
       <DependentUpon>FrmInfoAsrama.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmKamar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmKamar.Designer.cs">
+      <DependentUpon>FrmKamar.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmKurangPoin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     <EmbeddedResource Include="FrmInfoAsrama.resx">
       <DependentUpon>FrmInfoAsrama.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmKamar.resx">
+      <DependentUpon>FrmKamar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmKurangPoin.resx">
       <DependentUpon>FrmKurangPoin.cs</DependentUpon>
     </EmbeddedResource>
@@ -274,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\088154ee-ea75-4205-a165-94cf32fb3b0c.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Desktop - 1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

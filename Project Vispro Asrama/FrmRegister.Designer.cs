@@ -43,6 +43,7 @@
             this.txtPembayaran = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.dataGridViewAsrama = new System.Windows.Forms.DataGridView();
+            this.btnCheckKamar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAsrama)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,6 +194,16 @@
             this.dataGridViewAsrama.Size = new System.Drawing.Size(350, 167);
             this.dataGridViewAsrama.TabIndex = 29;
             // 
+            // btnCheckKamar
+            // 
+            this.btnCheckKamar.Location = new System.Drawing.Point(797, 142);
+            this.btnCheckKamar.Name = "btnCheckKamar";
+            this.btnCheckKamar.Size = new System.Drawing.Size(144, 48);
+            this.btnCheckKamar.TabIndex = 30;
+            this.btnCheckKamar.Text = "Check-Kamar";
+            this.btnCheckKamar.UseVisualStyleBackColor = true;
+            this.btnCheckKamar.Click += new System.EventHandler(this.btnCheckKamar_Click);
+            // 
             // FrmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -200,6 +211,7 @@
             this.BackgroundImage = global::Project_Vispro_Asrama.Properties.Resources._088154ee_ea75_4205_a165_94cf32fb3b0c;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1293, 750);
+            this.Controls.Add(this.btnCheckKamar);
             this.Controls.Add(this.dataGridViewAsrama);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtPembayaran);
@@ -243,5 +255,6 @@
         private System.Windows.Forms.TextBox txtPembayaran;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridViewAsrama;
+        private System.Windows.Forms.Button btnCheckKamar;
     }
 }

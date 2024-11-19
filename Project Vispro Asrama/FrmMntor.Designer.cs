@@ -171,6 +171,8 @@
             // 
             // panelKonten
             // 
+            this.panelKonten.BackgroundImage = global::Project_Vispro_Asrama.Properties.Resources.Desktop___1;
+            this.panelKonten.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panelKonten.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelKonten.Location = new System.Drawing.Point(372, 82);
             this.panelKonten.Name = "panelKonten";

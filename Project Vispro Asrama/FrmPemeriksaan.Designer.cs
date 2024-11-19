@@ -34,10 +34,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtJam = new System.Windows.Forms.TextBox();
             this.txtHadir = new System.Windows.Forms.TextBox();
             this.txtTidakHadir = new System.Windows.Forms.TextBox();
             this.lblTanggalPemeriksaan = new System.Windows.Forms.Label();
+            this.dtpWaktu = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // button1
@@ -104,13 +104,6 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "Jam pemeriksaan";
             // 
-            // txtJam
-            // 
-            this.txtJam.Location = new System.Drawing.Point(772, 427);
-            this.txtJam.Name = "txtJam";
-            this.txtJam.Size = new System.Drawing.Size(269, 22);
-            this.txtJam.TabIndex = 8;
-            // 
             // txtHadir
             // 
             this.txtHadir.Location = new System.Drawing.Point(772, 375);
@@ -137,6 +130,14 @@
             this.lblTanggalPemeriksaan.Text = "No.Kamar";
             this.lblTanggalPemeriksaan.Click += new System.EventHandler(this.label5_Click);
             // 
+            // dtpWaktu
+            // 
+            this.dtpWaktu.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dtpWaktu.Location = new System.Drawing.Point(772, 427);
+            this.dtpWaktu.Name = "dtpWaktu";
+            this.dtpWaktu.Size = new System.Drawing.Size(269, 22);
+            this.dtpWaktu.TabIndex = 12;
+            // 
             // FrmPemeriksaan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -144,10 +145,10 @@
             this.BackgroundImage = global::Project_Vispro_Asrama.Properties.Resources._088154ee_ea75_4205_a165_94cf32fb3b0c;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1271, 717);
+            this.Controls.Add(this.dtpWaktu);
             this.Controls.Add(this.lblTanggalPemeriksaan);
             this.Controls.Add(this.txtTidakHadir);
             this.Controls.Add(this.txtHadir);
-            this.Controls.Add(this.txtJam);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -172,9 +173,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtJam;
         private System.Windows.Forms.TextBox txtHadir;
         private System.Windows.Forms.TextBox txtTidakHadir;
         private System.Windows.Forms.Label lblTanggalPemeriksaan;
+        private System.Windows.Forms.DateTimePicker dtpWaktu;
     }
 }

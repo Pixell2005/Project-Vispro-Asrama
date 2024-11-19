@@ -73,6 +73,16 @@ namespace Project_Vispro_Asrama.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Desktop___1 {
+            get {
+                object obj = ResourceManager.GetObject("Desktop - 1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LOGO_UNIVERSITAS_KLABAT {
             get {
                 object obj = ResourceManager.GetObject("LOGO_UNIVERSITAS_KLABAT", resourceCulture);
